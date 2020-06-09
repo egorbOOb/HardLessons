@@ -5,7 +5,7 @@ let weekDaysRu = ['понедельник', ' вторник', ' среда', ' 
 
 
 
-//a.
+//a
 if (lang === 'en') {
     console.log(weekDaysEn);
 } else if (lang === 'ru') {
@@ -14,7 +14,7 @@ if (lang === 'en') {
 
 
 
-//b.
+//b
 switch (lang) {
     case 'en':
         alert(weekDaysEn);
@@ -28,10 +28,31 @@ switch (lang) {
 
 
 
-//c.
+//c
 let  diffLanguageOption = [
     ['sunday', ' monday', ' tuesday', ' wednesday', ' thursday', ' friday' , ' saturday'],
     ['понедельник', ' вторник', ' среда', ' среда', ' четверг', ' пятница', ' суббота', ' воскресенье'],
 ];
 
 lang === 'en' ? console.log(diffLanguageOption[0]) : console.log(diffLanguageOption[1]);
+//alert(diffLanguageOption[1]);
+
+/*isCyrillic = function (prompt()) {
+    return /[а-я]/i.test(text);
+};
+
+console.log(isCyrillic());
+
+let weekDaysRu = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday' , 'saturday'];
+let weekDaysEn = ['понедельник', 'вторник', 'среда', 'среда', 'четверг', 'пятница', 'суббота', 'воскресенье'];
+
+console.log(weekDays[3]);
+
+let lang = isCyrillic
+
+if (lang == true) {
+    console.log(weekDaysRu)
+} else {
+    console.log(weekDaysEn);
+}
+*/
