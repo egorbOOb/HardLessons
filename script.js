@@ -5,7 +5,7 @@ let weekDaysRu = ['понедельник', ' вторник', ' среда', ' 
 
 
 
-//a
+//a.
 if (lang === 'en') {
     console.log(weekDaysEn);
 } else if (lang === 'ru') {
@@ -14,7 +14,7 @@ if (lang === 'en') {
 
 
 
-//b
+//b.
 switch (lang) {
     case 'en':
         alert(weekDaysEn);
@@ -28,7 +28,7 @@ switch (lang) {
 
 
 
-//c
+//c.
 let  diffLanguageOption = [
     ['sunday', ' monday', ' tuesday', ' wednesday', ' thursday', ' friday' , ' saturday'],
     ['понедельник', ' вторник', ' среда', ' среда', ' четверг', ' пятница', ' суббота', ' воскресенье'],
