@@ -1,5 +1,5 @@
 //1.
-let lang = prompt('Укажите язык: en или ru');
+/*let lang = prompt('Укажите язык: en или ru');
 
 let weekDaysEn = ['sunday', ' monday', ' tuesday', ' wednesday', ' thursday', ' friday' , ' saturday'];
 let weekDaysRu = ['понедельник', ' вторник', ' среда', ' среда', ' четверг', ' пятница', ' суббота', ' воскресенье'];
@@ -46,19 +46,28 @@ let namePerson = prompt('Введите имя');
     ( namePerson === 'Максим') ? console.log('Преподаватель') :
     console.log('Студент');
 
-
+*/
 
     //Урок №4
+function getStr() {
+    let str;
+    do {
+        str = prompt('Введите строку, из которой хотите получить строку нужного формата');
+    } while (typeof(str) !== 'string');
+    
+    return str;
+};
 
-function getCleanStr(str) {
-    let size = 30;
-    if (typeof(str) !== 'string') {
-        return 'Введенное значение должно быть строкой';
-    } else if (str.trim().length >= size) {
-        return str.trim().slice(0, size) + '...';
-    } else if (str.trim().length < size) {
-        return str.trim();
+function showCleanStr() {
+    let str = getStr();
+    let size = 30,
+        croppedString = str.trim();
+    if (croppedString.length >= size) {
+        return alert(croppedString.slice(0, size) + '...');
+    } else if (croppedString.length < size) {
+        return alert(croppedString);
     } 
 };
 
-console.log(getCleanStr('\t 55    344535533553355353535353535353353   '));
+showCleanStr();
+
