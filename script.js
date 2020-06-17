@@ -1,114 +1,160 @@
-//1.
-let lang = prompt('Укажите язык: en или ru');
+let formatDate = new Date();
 
-let weekDaysEn = ['sunday', ' monday', ' tuesday', ' wednesday', ' thursday', ' friday' , ' saturday'];
-let weekDaysRu = ['понедельник', ' вторник', ' среда', ' среда', ' четверг', ' пятница', ' суббота', ' воскресенье'];
-
-
-
-//a.
-if (lang === 'en') {
-    console.log(weekDaysEn);
-} else if (lang === 'ru') {
-    console.log(weekDaysRu);
-};
-
-
-
-//b.
-switch (lang) {
-    case 'en':
-        alert(weekDaysEn);
-        console.log(weekDaysEn);
-        break;
-    case 'ru':
-        alert(weekDaysRu)
-        console.log(weekDaysRu);
-        break;
-};
-
-
-
-//c.
-let  diffLanguageOption = [
-    ['sunday', ' monday', ' tuesday', ' wednesday', ' thursday', ' friday' , ' saturday'],
-    ['понедельник', ' вторник', ' среда', ' среда', ' четверг', ' пятница', ' суббота', ' воскресенье'],
-];
-
-lang === 'en' ? console.log(diffLanguageOption[0]) : console.log(diffLanguageOption[1]);
-
-
-
-//2.
-let namePerson = prompt('Введите имя');
-
-(namePerson === 'Артем') ? console.log('Директор') :
-    ( namePerson === 'Максим') ? console.log('Преподаватель') :
-    console.log('Студент');
-
-
-
-//Урок №4
-function getStr() {
-    let str;
-    do {
-        str = prompt('Введите строку, из которой хотите получить строку нужного формата');
-    } while (typeof(str) !== 'string');
-    
-    return str;
-};
-
-function showCleanStr() {
-    let str = getStr();
-    let size = 30,
-        croppedString = str.trim();
-    if (croppedString.length >= size) {
-        return alert(croppedString.slice(0, size) + '...');
-    } else if (croppedString.length < size) {
-        return alert(croppedString);
-    } 
-};
-
-showCleanStr();
-
-//Урок №5
-
-let arr = ['23451', '46464', '5552', '3142', '4678', '9699', '851046'];
-
-
-let numberss;
-
-function showDesiredNumbers() {
-
-    for (let i = 0; i < arr.length; i++) {
-
-        numberss = arr[i];
-
-        if (Number(numberss[0]) === 2 || Number(numberss[0]) === 4) {
-
-            console.log(arr[i]);
-        
-        };
-    }
-};
-
-    
-showDesiredNumbers()
-
-
-
-
-let numbers = [];
-
-
-Next: for (let i = 2; i < 10; i++) {
-    for (let y = 2; y < i; y++) {
-        if (i % y === 0) {
-            continue Next;
+let firstFormatDate = {
+    getDayOfWeek: function(dayOfWeek) {
+        switch (dayOfWeek) {
+            case 1:
+                return 'понедельник';
+            case 2:
+                return 'вторник';
+            case 3:
+                return 'среда';
+            case 4:
+                return 'четверг';
+            case 5:
+                return 'пятница';
+            case 6:
+                return 'суббота';
+            case 0:
+                return 'воскресение';
         }
+    },
+    getNameOfMonth: function(nameOfMonth) {
+        switch (nameOfMonth) {
+            case 0:
+                return ' января ';
+            case 1:
+                return ' февраля ';
+            case 2:
+                return ' марта ';
+            case 3:
+                return ' апреля ';
+            case 4:
+                return ' мая ';
+            case 5:
+                return ' июня ';
+            case 6:
+                return ' июля ';
+            case 7:
+                return ' августа ';
+            case 8:
+                return ' сентября ';
+            case 9:
+                return ' октября ';
+            case 10:
+                return ' ноября ';
+            case 11:
+                return ' декабря ';
+        }
+    },
+    getFormatHours: function(hour) {
+        switch (hour) {
+            case 21:
+            case 1:
+                return hour + ' час ';
+            case 2:
+            case 3:
+            case 4:
+            case 22:
+            case 23:
+                return hour + ' часа ';
+            case 0:
+            case 5:
+            case 6:
+            case 7:
+            case 8:
+            case 9:
+            case 10:
+            case 11:
+            case 12:
+            case 13:
+            case 14:
+            case 15:
+            case 16:
+            case 17:
+            case 18:
+            case 19:
+            case 20:
+                return hour + ' часов '
+        }
+    },
+    getFormatMinute: function(minute) {
+        let number = minute + '';
+        let lastOfNumber = +(number.length - 1);
+        if (+number[lastOfNumber] === 1 && minute !== 11) {
+            return  minute + ' минута '
+        } else if ((minute !== 12 && minute !== 13 && minute !== 14) && (+number[lastOfNumber] === 3 || +number[lastOfNumber] === 2 || +number[lastOfNumber] === 4)) {
+            return minute + ' минуты '
+        } else {
+            return minute + ' минут '
+        }
+    },
+    getFormatSecond: function(second) {
+        let number = second + '';
+        let lastOfNumber = +(number.length - 1);
+        if (+number[lastOfNumber] === 1 && second !== 11) {
+            return  second + ' секунда '
+        } else if ((second !== 12 && second !== 13 && second !== 14) && (+number[lastOfNumber] === 3 || +number[lastOfNumber] === 2 || +number[lastOfNumber] === 4)) {
+            return second + ' секунды '
+        } else {
+            return second + ' секунд '
+        }
+    },
+    getFormatOfDate: function() {
+        return 'Сегодня ' + firstFormatDate.getDayOfWeek(formatDate.getDay()) + ', ' + formatDate.getDate() + firstFormatDate.getNameOfMonth(formatDate.getMonth()) + formatDate.getFullYear() + ' года, ' + firstFormatDate.getFormatHours(formatDate.getHours()) + firstFormatDate.getFormatMinute(formatDate.getMinutes()) + firstFormatDate.getFormatSecond(formatDate.getSeconds());
 
-    }
-
-    numbers.push(i);
-    console.log(i + '- Делители этого числа: 1 и ' + i);
+    },
 }
+
+
+console.log(firstFormatDate.getFormatOfDate());
+
+//alert(firstFormatDate.getFormatOfDate);
+
+let secondFormatDate = {
+    getDayInFormat: function(dayNumber) {
+        let dayStr = dayNumber + '';
+        if (dayStr.length === 1) {
+            return '0' + dayNumber
+        } else {
+            return dayNumber
+        }
+    },
+    getMonthInFormat: function(monthNumber) {
+        let monthStr = monthNumber + '';
+        if (monthStr.length === 1) {
+            return '0' + (monthNumber + 1)
+        } else {
+            return monthNumber + 1
+        }
+    },
+    getHourInFormat: function(hourNumber) {
+        let hourStr = hourNumber + '';
+        if (hourStr.length === 1) {
+            return '0' + hourNumber
+        } else {
+            return hourNumber
+        }
+    },
+    getSecondInFormat: function(secondNumber) {
+        let secondStr = secondNumber + '';
+        if (secondStr.length === 1) {
+            return '0' + secondNumber
+        } else {
+            return secondNumber
+        }
+    },
+    getMinuteInFormat: function(minuteNumber) {
+        let minuteStr = minuteNumber + '';
+        if (minuteStr.length === 1) {
+            return '0' + minuteNumber
+        } else {
+            return minuteNumber
+        }
+    },
+    getDateInFormat: function() {
+        return secondFormatDate.getDayInFormat(formatDate.getDate()) + '.' + secondFormatDate.getMonthInFormat(formatDate.getMonth()) + '.' + formatDate.getFullYear() + ' - ' + secondFormatDate.getHourInFormat(formatDate.getHours()) + ':' + secondFormatDate.getMinuteInFormat(formatDate.getMinutes()) + ':' + secondFormatDate.getSecondInFormat(formatDate.getSeconds())
+    }
+}
+
+console.log(secondFormatDate.getDateInFormat());
