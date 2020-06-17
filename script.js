@@ -1,5 +1,9 @@
 let formatDate = new Date();
 
+let resetFormatDate = function() {
+    formatDate = new Date();
+}
+
 let firstFormatDate = {
     getDayOfWeek: function(dayOfWeek) {
         switch (dayOfWeek) {
@@ -101,6 +105,7 @@ let firstFormatDate = {
         }
     },
     getFormatOfDate: function() {
+        resetFormatDate();
         return 'Сегодня ' + firstFormatDate.getDayOfWeek(formatDate.getDay()) + ', ' + formatDate.getDate() + firstFormatDate.getNameOfMonth(formatDate.getMonth()) + formatDate.getFullYear() + ' года, ' + firstFormatDate.getFormatHours(formatDate.getHours()) + firstFormatDate.getFormatMinute(formatDate.getMinutes()) + firstFormatDate.getFormatSecond(formatDate.getSeconds());
 
     },
@@ -153,8 +158,13 @@ let secondFormatDate = {
         }
     },
     getDateInFormat: function() {
+        resetFormatDate();
         return secondFormatDate.getDayInFormat(formatDate.getDate()) + '.' + secondFormatDate.getMonthInFormat(formatDate.getMonth()) + '.' + formatDate.getFullYear() + ' - ' + secondFormatDate.getHourInFormat(formatDate.getHours()) + ':' + secondFormatDate.getMinuteInFormat(formatDate.getMinutes()) + ':' + secondFormatDate.getSecondInFormat(formatDate.getSeconds())
     }
-}
+};
 
-console.log(secondFormatDate.getDateInFormat());
+let datePerSecond = function() {
+    alert(secondFormatDate.getDateInFormat() + '\n' + firstFormatDate.getFormatOfDate());
+};
+
+setInterval(datePerSecond, 1000);
